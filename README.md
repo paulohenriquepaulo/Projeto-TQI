@@ -1,2 +1,2 @@
 # Projeto-TQI
-Projeto processo seletivo TQI
+Processo seletivo TQI
