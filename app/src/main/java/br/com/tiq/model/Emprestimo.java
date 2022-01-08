@@ -1,14 +1,24 @@
 package br.com.tiq.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
+@Entity
 public class Emprestimo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
     private SituacaoEmprestimo situacao;
+
     private Double valor;
     private LocalDate  dataPrimeiraParcela;
     private Integer quantidadeParcelas;
     private Integer quantidaParcelas;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
     public SituacaoEmprestimo getSituacao() {

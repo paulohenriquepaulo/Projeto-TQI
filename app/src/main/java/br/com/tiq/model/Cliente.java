@@ -1,7 +1,14 @@
 package br.com.tiq.model;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String email;
     private String cpf;
@@ -9,6 +16,17 @@ public class Cliente {
     private String endereco;
     private Double renda;
     private String senha;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Emprestimo> emprestimos;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -66,4 +84,11 @@ public class Cliente {
         this.senha = senha;
     }
 
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
 }
