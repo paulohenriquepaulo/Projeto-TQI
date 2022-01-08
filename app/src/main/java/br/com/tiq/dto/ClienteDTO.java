@@ -1,8 +1,9 @@
 package br.com.tiq.dto;
 
-
+import br.com.tiq.model.Endereco;
 import org.hibernate.validator.constraints.br.CPF;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -23,8 +24,9 @@ public class ClienteDTO {
     @NotEmpty(message = "RG obrigatório")
     private String rg;
 
-    @NotEmpty(message = "Endereço obrigatório")
-    private String endereco;
+    @Valid
+    @NotNull(message = "Endereço obrigatório")
+    private EnderecoDTO endereco;
 
     @NotNull(message = "Renda obrigatória")
     private Double renda;
@@ -64,11 +66,11 @@ public class ClienteDTO {
         this.rg = rg;
     }
 
-    public String getEndereco() {
+    public EnderecoDTO getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(EnderecoDTO endereco) {
         this.endereco = endereco;
     }
 

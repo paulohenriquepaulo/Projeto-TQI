@@ -10,11 +10,15 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String cpf;
+    @Column(unique = true)
     private String rg;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
     private Double renda;
     private String senha;
@@ -93,4 +97,6 @@ public class Cliente {
     public void setEmprestimos(List<Emprestimo> emprestimos) {
         this.emprestimos = emprestimos;
     }
+
+
 }

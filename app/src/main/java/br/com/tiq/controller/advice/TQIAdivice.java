@@ -1,5 +1,7 @@
 package br.com.tiq.controller.advice;
 
+import br.com.tiq.exception.TQICreditoException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,6 +25,12 @@ public class TQIAdivice {
             errors.put(fieldName, errorMessage);
         });
         return errors;
+    }
+
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ExceptionHandler(TQICreditoException.class)
+    public Map<String, String> handlerDataIntegrityViolationException(TQICreditoException ex) {
+        return ex.getErrors();
     }
 
 }

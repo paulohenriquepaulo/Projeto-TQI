@@ -124,13 +124,4 @@ public enum Estado {
     return this.capital;
   }
 
-  @Override
-  public String toString() {
-    final StringBuilder sb = new StringBuilder("UnidadeFederacao{");
-    sb.append("nome='").append(nome).append('\'');
-    sb.append(", sigla='").append(sigla).append('\'');
-    sb.append(", capital='").append(capital).append('\'');
-    sb.append('}');
-    return sb.toString();
-  }
 }
