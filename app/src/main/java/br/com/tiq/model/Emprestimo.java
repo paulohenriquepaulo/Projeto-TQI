@@ -2,6 +2,7 @@ package br.com.tiq.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+
 @Entity
 public class Emprestimo {
 
@@ -15,7 +16,6 @@ public class Emprestimo {
     private Double valor;
     private LocalDate  dataPrimeiraParcela;
     private Integer quantidadeParcelas;
-    private Integer quantidaParcelas;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -51,14 +51,6 @@ public class Emprestimo {
 
     public void setQuantidadeParcelas(Integer quantidadeParcelas) {
         this.quantidadeParcelas = quantidadeParcelas;
-    }
-
-    public Integer getQuantidaParcelas() {
-        return quantidaParcelas;
-    }
-
-    public void setQuantidaParcelas(Integer quantidaParcelas) {
-        this.quantidaParcelas = quantidaParcelas;
     }
 
     public Cliente getCliente() {
