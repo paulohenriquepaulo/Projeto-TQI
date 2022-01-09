@@ -1,6 +1,6 @@
 package br.com.tiq.mapper;
 
-import br.com.tiq.dto.ClienteDTO;
+import br.com.tiq.dto.cliente.ClienteDTO;
 import br.com.tiq.model.Cliente;
 import org.mapstruct.Mapper;
 

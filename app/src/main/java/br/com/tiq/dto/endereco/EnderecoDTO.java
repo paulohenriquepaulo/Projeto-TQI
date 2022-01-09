@@ -1,4 +1,4 @@
-package br.com.tiq.dto;
+package br.com.tiq.dto.endereco;
 
 import br.com.tiq.model.Estado;
 

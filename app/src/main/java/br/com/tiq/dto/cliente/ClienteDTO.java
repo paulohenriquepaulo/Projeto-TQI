@@ -1,6 +1,6 @@
-package br.com.tiq.dto;
+package br.com.tiq.dto.cliente;
 
-import br.com.tiq.model.Endereco;
+import br.com.tiq.dto.endereco.EnderecoDTO;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.Valid;

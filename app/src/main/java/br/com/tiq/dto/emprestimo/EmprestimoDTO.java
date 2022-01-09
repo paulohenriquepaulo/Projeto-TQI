@@ -1,25 +1,27 @@
-package br.com.tiq.model;
+package br.com.tiq.dto.emprestimo;
 
-import javax.persistence.*;
+import br.com.tiq.model.SituacaoEmprestimo;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
-public class Emprestimo {
+public class EmprestimoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private SituacaoEmprestimo situacao;
 
+    @NotNull
     private Double valor;
-    private LocalDate  dataPrimeiraParcela;
-    private Integer quantidadeParcelas;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_cliente")
-    private Cliente cliente;
+    @NotNull
+    private LocalDate dataPrimeiraParcela;
+
+    @NotNull
+    @Min(value = 1, message = "Deve informar no mínimo uma parcela")
+    @Max(value = 60, message = "Permitido no máximo 60 parcelas")
+    private Integer quantidadeParcelas;
 
     public SituacaoEmprestimo getSituacao() {
         return situacao;
@@ -51,21 +53,5 @@ public class Emprestimo {
 
     public void setQuantidadeParcelas(Integer quantidadeParcelas) {
         this.quantidadeParcelas = quantidadeParcelas;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

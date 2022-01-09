@@ -1,9 +1,8 @@
 package br.com.tiq.controller;
 
-import br.com.tiq.dto.ClienteDTO;
+import br.com.tiq.dto.cliente.ClienteDTO;
 import br.com.tiq.mapper.ClienteMapper;
 import br.com.tiq.model.Cliente;
-import br.com.tiq.model.Endereco;
 import br.com.tiq.service.ClienteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
