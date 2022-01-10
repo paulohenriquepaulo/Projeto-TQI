@@ -35,8 +35,7 @@ public class EmprestimoController {
     public EmprestimoDTO cadrastarEmprestimo(
             @RequestBody @Valid EmprestimoDTO emprestimo,
             @Valid @Email @RequestHeader(name = "email", required = false) String email,
-            @RequestHeader(name = "senha", required = false) String senha
-    ) {
+            @RequestHeader(name = "senha", required = false) String senha) {
         logger.info("Teste", emprestimo);
         validarLogin(email, senha);
         Emprestimo emprestimoNovo = mapper.toModel(emprestimo);

@@ -1,6 +1,5 @@
 package br.com.tiq.service;
 
-import br.com.tiq.controller.ClienteController;
 import br.com.tiq.exception.TQICreditoException;
 import br.com.tiq.model.Cliente;
 import br.com.tiq.repository.ClienteRepository;
@@ -46,7 +45,4 @@ public class ClienteService {
             throw ex;
         }
     }
-
-
-
 }
