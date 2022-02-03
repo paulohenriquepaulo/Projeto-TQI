@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class EmprestimoService {
 
@@ -36,7 +37,7 @@ public class EmprestimoService {
 
     private void validarSenha(Cliente cliente, String senha) {
         if (!cliente.getSenha().equals(senha)) {
-            throw new TQICreditoException("Senha", "Senha inválida");
+            throw new TQICreditoException("Senha", "Senha inválida!");
         }
     }
 
@@ -45,27 +46,24 @@ public class EmprestimoService {
         if (cliente.isPresent()) {
             return cliente.get();
         } else {
-            throw new TQICreditoException("Cliente", "E-mail não cadastrado");
+            throw new TQICreditoException("Cliente", "E-mail não cadastrado!");
         }
     }
 
     private void validarEmprestimo(Emprestimo emprestimo) {
         TQICreditoException ex = new TQICreditoException();
-        Boolean valido = Boolean.TRUE;
         LocalDate hoje = LocalDate.now();
         if (emprestimo.getDataPrimeiraParcela().isBefore(hoje)) {
-            valido = Boolean.FALSE;
             ex.add("Data Primeira Parcela",
                     "A data da primeira parcela deve ser a partir da data atual");
+        } else {
+            LocalDate dataLimite = hoje.plusMonths(3l);
+            if (emprestimo.getDataPrimeiraParcela().isAfter(dataLimite)) {
+                ex.add("Data Primeira Parcela",
+                        ("A data da primeira parcela deve ser no máximo três meses a partir da data atual: ").concat(dataLimite.toString()));
+            }
         }
-        LocalDate dataLimite = hoje.plusMonths(3l);
-        if (emprestimo.getDataPrimeiraParcela().isAfter(dataLimite)) {
-            valido = Boolean.FALSE;
-            ex.add("Data Primeira Parcela",
-                    ("A data da primeira parcela deve ser no máximo " +
-                            "três meses a partir da data atual: ").concat(dataLimite.toString()));
-        }
-        if (!valido) {
+        if (!ex.getErrors().isEmpty()) {
             throw ex;
         }
     }
@@ -81,6 +79,6 @@ public class EmprestimoService {
         Cliente cliente = recuperarCliente(email);
         validarSenha(cliente, senha);
         Optional<Emprestimo> emprestimo = repository.findById(id);
-        return emprestimo.orElseThrow(() -> new TQICreditoException("Emprestimo", "Código de empréstimo inválido"));
+        return emprestimo.orElseThrow(() -> new TQICreditoException("Emprestimo", "Código de empréstimo inválido!"));
     }
 }

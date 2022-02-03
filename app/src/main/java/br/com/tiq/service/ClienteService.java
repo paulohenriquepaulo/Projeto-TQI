@@ -17,7 +17,7 @@ public class ClienteService {
     Logger logger = LoggerFactory.getLogger(ClienteService.class);
 
     public Cliente cadastrarCliente(Cliente cliente) {
-        logger.info("cliente:", cliente);
+        logger.info("cliente:", cliente.getEmail());
         validarCliente(cliente);
         repository.save(cliente);
         return cliente;

@@ -16,6 +16,7 @@ public class TQICreditoException extends RuntimeException {
         add(erro, descricao);
     }
 
+
     public void add(String erro, String descricao) {
         this.errors.put(erro, descricao);
     }

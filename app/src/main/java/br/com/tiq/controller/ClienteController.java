@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-
 @RestController
 @RequestMapping("clientes")
 public class ClienteController  {
