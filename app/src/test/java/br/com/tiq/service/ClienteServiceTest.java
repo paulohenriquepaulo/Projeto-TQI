@@ -2,7 +2,6 @@ package br.com.tiq.service;
 
 import br.com.tiq.exception.TQICreditoException;
 import br.com.tiq.model.Cliente;
-import br.com.tiq.model.Emprestimo;
 import br.com.tiq.repository.ClienteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
